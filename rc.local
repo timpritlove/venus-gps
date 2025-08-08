@@ -1,0 +1,3 @@
+#!/bin/sh
+# Start TCP NMEA GPS Bridge on boot
+/data/scripts/start_gps_bridge.sh &
