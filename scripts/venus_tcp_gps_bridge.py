@@ -162,8 +162,8 @@ class DbussGps:
             self.service['/Hdop'] = float(upd["hdop"])
         if "fix" in upd:
             self.service['/Fix'] = int(upd["fix"])
-        elif "valid" in upd:
-            self.service['/Fix'] = 2 if upd["valid"] else 0
+        elif "valid" in upd and not upd["valid"]:
+            self.service['/Fix'] = 0
 
         now = time.time()
         if now - self._last_log >= 1:
