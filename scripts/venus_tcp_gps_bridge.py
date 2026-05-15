@@ -135,7 +135,7 @@ class DbussGps:
         self.service.add_path('/NrOfSatellites', None)             # <-- correct name
         self.service.add_path('/Position/Latitude', 0.0)
         self.service.add_path('/Position/Longitude', 0.0)
-        self.service.add_path('/Position/Altitude', None)          # meters
+        self.service.add_path('/Altitude', None)                    # meters
         self.service.add_path('/Speed', 0.0)                       # m/s
         self.service.add_path('/Course', None)                     # deg
 
@@ -148,7 +148,7 @@ class DbussGps:
         if "lon" in upd:
             self.service['/Position/Longitude'] = float(upd["lon"])
         if "alt" in upd:
-            self.service['/Position/Altitude'] = float(upd["alt"])
+            self.service['/Altitude'] = float(upd["alt"])
 
         if "speed" in upd:
             self.service['/Speed'] = float(upd["speed"])
@@ -176,7 +176,7 @@ class DbussGps:
                 self.service['/Fix'],
                 self.service['/Position/Latitude'],
                 self.service['/Position/Longitude'],
-                self.service['/Position/Altitude'],
+                self.service['/Altitude'],
                 self.service['/NrOfSatellites'],
                 self.service['/Hdop'],
                 self.service['/Speed'],
