@@ -106,6 +106,9 @@ def parse_gpgga(parts):
         pass
     try:
         d["alt"] = float(parts[9])  # meters
+        # A valid altitude means we have a 3D fix, regardless of GGA quality field.
+        if d.get("fix", 0) == 2:
+            d["fix"] = 3
     except Exception:
         pass
     return d
