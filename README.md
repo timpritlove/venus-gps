@@ -76,10 +76,13 @@ mkdir -p /data/logs
 
 ### 4. Install Startup Script
 
+Venus OS automatically runs `/data/rc.local` at boot (via its `custom-rc.d` init helper), so no symlink into `/etc` is required — the rootfs is read-only anyway. Just make sure the script is executable (already done in step 2):
+
 ```bash
-# Link rc.local to run on boot
-ln -sf /data/rc.local /etc/rc.local
+chmod +x /data/rc.local
 ```
+
+Venus OS also supports `/data/rcS.local`, which is invoked earlier in the boot process (before network and most services are up). For this bridge `/data/rc.local` is the right hook, since D-Bus and networking must already be running.
 
 ### 5. Start the Service
 
